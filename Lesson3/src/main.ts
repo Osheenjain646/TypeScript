@@ -1,0 +1,143 @@
+// Arrays
+
+let stringArr: string[] = ["one", "two", "three"];
+
+let stringNumberArr: (string | number)[] = ["osheen", "xyz", 67568];
+
+let mixedData: any[] = ["aajbkj", 1984, true];
+
+// stringArr[0] = 895 // give error as of not matched types
+
+// stringArr.push(46) // same here
+
+stringArr.push("hey");
+
+stringNumberArr[0] = 790; // all good as it accept both string and number even changing string to number
+
+stringNumberArr.unshift("john"); // as it accepts number also
+
+mixedData.push(780); // can have any value
+
+// stringArr = stringNumberArr // give error as we are assigning a arr or type of both
+// number and string to a string only type arr
+// but
+// stringNumberArr = stringArr // can be done as stringNumber arr can accept string as their element data type
+
+// as it can have any datatype here
+// mixedData = stringArr
+// mixedData = stringNumberArr
+
+let test = []; // infer as any[] type of data
+
+let brands: string[] = []; // can accept only String type data in future
+brands.push("Porche"); // correctly accepted
+
+// if want to specify the type of a particular element in a array at a position you can use tuple for it
+
+// Tuple
+
+let myTuple: [string, number, boolean] = ["Osheen", 21, true]; // specifying the type at specific positions
+
+let mixed = ["xyz", 65, false];
+
+// myTuple = mixed // give error as the element at 0 pos in mixed can have any data type
+// whether string | number | boolean but i am assigning it to a fixed datatype that is string in myTuple
+// but
+mixed = myTuple; // this is correct
+
+// console.log(myTuple[0]);
+// console.log(myTuple[1]);
+// console.log(myTuple[2]);
+
+// myTuple[3] = 42 can't be accepted as 3 index type is not defined here
+
+// see Readme for more reference and info
+
+// Objects
+
+let myObject: Object;
+myObject = []; // re-assignable to an array but still it is an object type
+// console.log(typeof myObject) // object
+myObject = brands; // so it is assignable to an array
+myObject = {}; // can be assign to a empty object too
+
+// normal declaration
+// const exampleObj = {
+//     prop1: 'osheen',
+//     prop2: true
+// }
+
+// declaration with type define using type
+
+// defining that it must contain these property name with declared type
+type exampleObjType1 = {
+  name: string;
+  active: boolean;
+  albums: (string | number)[];
+};
+
+const exampleObj1: exampleObjType1 = {
+  name: "Osheen Jain",
+  active: true,
+  albums: ["TypeScript", 2026],
+};
+
+// exampleObj.years = 1984; // can't be assign as per it has fixed number of property defined
+
+// To make a property as optional add ? in front of the property name
+// which means object can have it or not in the object of that type
+
+type exampleObjType2 = {
+  name: string;
+  active?: boolean;
+  albums: (string | number)[];
+};
+
+const exampleObj2: exampleObjType2 = {
+  name: "Osheen Jain",
+  // optional active property
+  albums: ["Hello", 26462],
+};
+
+// using in a function by passing a object of type ObjectType
+
+const greet1 = (user: exampleObjType2): string => {
+  return `Hello ${user.name}!`;
+};
+
+// console.log(greet1(exampleObj2));
+
+// the second method for type define is using the interface
+
+interface exampleObjInterface1 {
+  name?: string;
+  active: boolean;
+  albums: (string | number)[];
+}
+
+let exampleObj3: exampleObjInterface1 = {
+  name: "Osheen Jain",
+  active: false,
+  albums: ["typescript", 2026],
+};
+
+const greet2 = (user: exampleObjInterface1): string => {
+  if (user.name) return `Hello ${user.name?.toUpperCase()}`; // as it is optional and might be undefined so need a optional quality of upperCase conversion
+  return "Hello!";
+};
+
+console.log(greet2(exampleObj3));
+
+// Enums
+// "Unlike most TypeScript features, Enums are not a type-level addition to JavaScript but something added to the language and runtime"
+
+// default starts with the value 0 to first prop and u can change by yourself
+enum Grade {
+  U = 3,
+  D,
+  C,
+  B,
+  A,
+}
+
+console.log(Grade.U, Grade.D, Grade.C, Grade.B, Grade.A);
