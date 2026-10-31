@@ -5,20 +5,20 @@
 
 // explicit declaration
 // no need to infer the type
-let myName: String = "Osheen Jain";
+let myName: string = "Osheen Jain";
 
 // or
 
 // both true as i am assigning a string to it only as per specified
 // as of let
-let Name: String;
+let Name: string;
 Name = "Osheen";
 Name = "xyz";
 // but const doesn't let you do it
 
 // types
 
-let string: String;
+let string: string;
 let Number: number;
 let isCorrect: boolean;
 let anyValue: any; // can have any type of data whether it is primitive or non-primitive data types
