@@ -78,7 +78,7 @@ interface Racer {
 
 
 class Driver implements Racer {
-    name: string,
+    name: string
     car: string
     
     constructor(name: string , car: string) {
