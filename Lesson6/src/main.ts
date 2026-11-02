@@ -70,30 +70,29 @@ console.log(abc.getLang()); // Return the default in parent class
 
 // Interfaces
 
-interface Racer { 
-    name: string,
-    car: string, 
-    drive(action: string): string
+interface Racer {
+  name: string;
+  car: string;
+  drive(action: string): string;
 }
-
 
 class Driver implements Racer {
-    name: string
-    car: string
-    
-    constructor(name: string , car: string) {
-        this.name = name
-        this.car = car
-    }
+  name: string;
+  car: string;
 
-    drive(action: string): string {
-        return `${this.name} is ${action} the ${this.car}`
-    }
+  constructor(name: string, car: string) {
+    this.name = name;
+    this.car = car;
+  }
+
+  drive(action: string): string {
+    return `${this.name} is ${action} the ${this.car}`;
+  }
 }
 
-const abc1 = new Driver('abc1' , 'Bugatti')
+const abc1 = new Driver("abc1", "Bugatti");
 
-console.log(abc1.drive('driving'))
+console.log(abc1.drive("driving"));
 
 /////////////////////////////////////////
 
@@ -103,26 +102,25 @@ console.log(abc1.drive('driving'))
 // and in method of class member can be access using the class name itself only
 
 class Peeps {
-    static count: number = 0
+  static count: number = 0;
 
-    static getCount(): number {
-        return Peeps.count;
-    }
+  static getCount(): number {
+    return Peeps.count;
+  }
 
-    public id: number
+  public id: number;
 
-    constructor(public name: string){
-        this.name = name
-        this.id = ++Peeps.count
-    }
+  constructor(public name: string) {
+    this.name = name;
+    this.id = ++Peeps.count;
+  }
 }
 
 console.log(Peeps.getCount());
 
-
-const a = new Peeps('a');
-const b = new Peeps('b');
-const c = new Peeps('c');
+const a = new Peeps("a");
+const b = new Peeps("b");
+const c = new Peeps("c");
 
 console.log(a.id);
 console.log(b.id);
@@ -135,30 +133,32 @@ console.log(Peeps.count);
 // getters ans setters
 
 class Bands {
-    private dataState: string[]
+  private dataState: string[];
 
-    constructor(){
-        this.dataState = []
-    }
+  constructor() {
+    this.dataState = [];
+  }
 
-    public get data(): string[] {
-        return this.dataState
-    }
+  public get data(): string[] {
+    return this.dataState;
+  }
 
-    public set data(value: string[]) {
-        if(Array.isArray(value) && value.every(element => typeof element === 'string')){
-            this.dataState = value
-            return
-        }else{
-            throw new Error('parameter is not an array or not a array of strings')
-        }
+  public set data(value: string[]) {
+    if (
+      Array.isArray(value) &&
+      value.every((element) => typeof element === "string")
+    ) {
+      this.dataState = value;
+      return;
+    } else {
+      throw new Error("parameter is not an array or not a array of strings");
     }
+  }
 }
 
-const myBands = new Bands()
-myBands.data = ['abc' , 'xyz']
-console.log(myBands.data)
-myBands.data = [...myBands.data , 'pqr']
-console.log(myBands.data)
+const myBands = new Bands();
+myBands.data = ["abc", "xyz"];
+console.log(myBands.data);
+myBands.data = [...myBands.data, "pqr"];
+console.log(myBands.data);
 // myBands.data = ['jkl' , 5150] // give error here and in console too as throw error
-
